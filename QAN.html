@@ -227,12 +227,12 @@
 <script>
   // ฟังก์ชันเพื่อโหลด Google Sheets API
   function loadSheetsApi() {
-      return gapi.client.load('https://sheets.googleapis.com/$discovery/rest?version=v4').then(() => {
-          gapi.client.setApiKey('AIzaSyC_lhDmL90Fw_XEVkPRVGckW7Ap_9eB7BU');
-          console.log('Google Sheets API loaded successfully');
-      }).catch(error => {
-          console.error('Error loading Sheets API:', error);
-      });
+    return gapi.client.load('https://sheets.googleapis.com/$discovery/rest?version=v4').then(() => {
+        gapi.client.setApiKey('AIzaSyC_lhDmL90Fw_XEVkPRVGckW7Ap_9eB7BU'); // ตรวจสอบว่า API Key ถูกต้อง
+        console.log('Google Sheets API loaded successfully');
+    }).catch(error => {
+        console.error('Error loading Sheets API:', error);
+    });
   }
 
   // ฟังก์ชันเพื่อดึงข้อมูลจาก Google Sheet
@@ -267,20 +267,20 @@
 
   // ฟังก์ชันเพื่อบันทึกข้อมูลไปยัง Google Sheet
   function savePartDetails(partNo, partName, supplier) {
-      return gapi.client.sheets.spreadsheets.values.append({
-          spreadsheetId: '1Qu0CKDLuqG0YxuUW8ov22sEtpdrRIm7gG-hDI1m58pc',
-          range: 'Tracking!A:D',
-          valueInputOption: 'RAW',
-          insertDataOption: 'INSERT_ROWS',
-          resource: {
-              values: [[partNo, partName, supplier]]
-          }
-      }).then(response => {
-          console.log('Success:', response);
-      }).catch(error => {
-          console.error('Error saving part details:', error);
-      });
-  }
+    return gapi.client.sheets.spreadsheets.values.append({
+        spreadsheetId: '1Qu0CKDLuqG0YxuUW8ov22sEtpdrRIm7gG-hDI1m58pc',
+        range: 'Tracking!A:D',
+        valueInputOption: 'RAW',
+        insertDataOption: 'INSERT_ROWS',
+        resource: {
+            values: [[partNo, partName, supplier]]
+        }
+    }).then(response => {
+        console.log('Success:', response);
+    }).catch(error => {
+        console.error('Error saving part details:', error);
+    });
+}
 
   // ฟังก์ชันเพื่อจัดการเมื่อผู้ใช้กรอกข้อมูล
   document.getElementById('floatingpartno').addEventListener('blur', async (event) => {
