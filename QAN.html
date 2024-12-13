@@ -296,7 +296,8 @@
   });
 
   // ฟังก์ชันเพื่อจัดการเมื่อผู้ใช้กดปุ่ม Submit
-  document.getElementById('submitBtn').addEventListener('click', async () => {
+  document.getElementById('submitBtn').addEventListener('click', async (event) => {
+      event.preventDefault(); // ป้องกันการรีเฟรชหน้าเว็บ
       const partNo = document.getElementById('floatingpartno').value;
       const partName = document.getElementById('floatingpartname').value;
       const supplier = document.getElementById('floatingsupplier').value;
